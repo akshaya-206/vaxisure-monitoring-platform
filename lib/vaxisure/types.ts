@@ -24,6 +24,15 @@ export type SensorReading = {
   rtc_timestamp: string | null
 }
 
+export type AlertHistory = {
+  id: string
+  alert_id: string
+  actor_id: string | null
+  action: "created" | "acknowledged" | "resolved" | "reopened"
+  note: string
+  created_at: string
+}
+
 export type Alert = {
   id: string
   device_id: string | null
@@ -75,9 +84,11 @@ export type MonitoringData = {
   devices: Device[]
   readings: SensorReading[]
   alerts: Alert[]
+  alertHistory: AlertHistory[]
   batches: VaccineBatch[]
   shipments: Shipment[]
   locations: ShipmentLocation[]
   organizationName: string
+  organizationId?: string | null
   role: "admin" | "clinic_staff" | "transportation"
 }

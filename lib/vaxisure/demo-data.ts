@@ -52,12 +52,13 @@ export const demoReadings: SensorReading[] = Array.from({ length: 48 }, (_, inde
     humidity_percent: Number((58 + Math.sin(index * 0.4) * 5 + (index === 37 ? 10 : 0)).toFixed(1)),
     rtc_timestamp: recordedAt,
   }
-})
+}).reverse()
 
 export const demoMonitoringData: MonitoringData = {
   devices: demoDevices,
   readings: demoReadings,
   alerts: demoAlerts,
+  alertHistory: [],
   batches: demoBatches,
   shipments: demoShipments,
   locations: demoLocations,

@@ -1,6 +1,6 @@
 "use client"
 
-import { useMemo } from "react"
+import { useEffect, useMemo } from "react"
 import { MapContainer, Marker, Polyline, TileLayer, Tooltip, useMap } from "react-leaflet"
 import L from "leaflet"
 import "leaflet/dist/leaflet.css"
@@ -23,12 +23,14 @@ const pin = (kind: "destination" | "vehicle") => L.divIcon({
 
 function MapBounds({ points }: { points: [number, number][] }) {
   const map = useMap()
-  if (points.length > 1) map.fitBounds(points, { padding: [28, 28], maxZoom: 8 })
-  else if (points.length === 1) map.setView(points[0], 7)
+  useEffect(() => {
+    if (points.length > 1) map.fitBounds(points, { padding: [28, 28], maxZoom: 8 })
+    else if (points.length === 1) map.setView(points[0], 7)
+  }, [map, points])
   return null
 }
 
-export function ShipmentMap({ shipments, locations, demo, selectedId, onSelect }: {
+export function ShipmentMapInner({ shipments, locations, demo, selectedId, onSelect }: {
   shipments: Shipment[]
   locations: ShipmentLocation[]
   demo: boolean
