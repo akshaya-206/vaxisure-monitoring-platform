@@ -74,7 +74,7 @@ const pageTitles: Record<PageId, string> = {
 }
 
 function BrandMark({ compact = false }: { compact?: boolean }) {
-  return <span className={`brand-mark${compact ? " brand-mark--compact" : ""}`} aria-hidden="true"><ShieldCheck className="brand-mark__shield" size={compact ? 28 : 34} strokeWidth={1.8} /><FlaskConical className="brand-mark__vial" size={compact ? 13 : 15} strokeWidth={2} /><Wifi className="brand-mark__signal" size={compact ? 8 : 9} strokeWidth={2} /></span>
+  return <span className={`brand-mark${compact ? " brand-mark--compact" : ""}`} aria-hidden="true"><ShieldCheck className="brand-mark__shield" size={compact ? 28 : 34} strokeWidth={1.8} /><FlaskConical className="brand-mark__vial" size={compact ? 13 : 15} strokeWidth={2} /><svg className="brand-mark__signal" width={compact ? 8 : 9} height={compact ? 8 : 9} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 8.5a11 11 0 0 1 14 0" /><path d="M8.5 12a5.5 5.5 0 0 1 7 0" /><path d="M12 16h.01" /></svg></span>
 }
 
 function LiveClock() {
